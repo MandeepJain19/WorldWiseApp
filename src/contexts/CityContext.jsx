@@ -14,8 +14,85 @@ function getWindowSize() {
   return window.screen.availWidth || window.screen.width;
 }
 
+const cities = {
+  "cities": [
+    {
+      "cityName": "Lisbon",
+      "country": "Portugal",
+      "emoji": "PT",
+      "date": "2027-10-31T15:59:59.138Z",
+      "notes": "My favorite city so far!",
+      "position": {
+        "lat": 38.727881642324164,
+        "lng": -9.140900099907554
+      },
+      "id": "73930385"
+    },
+    {
+      "cityName": "Madrid",
+      "country": "Spain",
+      "emoji": "ES",
+      "date": "2027-07-15T08:22:53.976Z",
+      "notes": "",
+      "position": {
+        "lat": 40.46635901755316,
+        "lng": -3.7133789062500004
+      },
+      "id": "17806751"
+    },
+    {
+      "cityName": "Berlin",
+      "country": "Germany",
+      "emoji": "DE",
+      "date": "2027-02-12T09:24:11.863Z",
+      "notes": "Amazing 😃",
+      "position": {
+        "lat": 52.53586782505711,
+        "lng": 13.376933665713324
+      },
+      "id": "98443197"
+    },
+    {
+      "id": "1fe9",
+      "cityName": "Castilblanco",
+      "country": "Spain",
+      "emoji": "ES",
+      "date": "2024-01-29T13:24:17.390Z",
+      "notes": "test",
+      "position": {
+        "lat": "39.2492708462234",
+        "lng": "-5.119628906250001"
+      }
+    },
+    {
+      "id": "dfb8",
+      "cityName": "Ujjain",
+      "country": "India",
+      "emoji": "IN",
+      "date": "2024-01-29T13:40:24.537Z",
+      "notes": "Jai Mahakal",
+      "position": {
+        "lat": "23.233836253301572",
+        "lng": "75.82361776381732"
+      }
+    },
+    {
+      "id": "0a49",
+      "cityName": "Indore",
+      "country": "India",
+      "emoji": "IN",
+      "date": "2024-01-29T13:41:05.677Z",
+      "notes": "",
+      "position": {
+        "lat": "22.725523811089413",
+        "lng": "75.97045898437501"
+      }
+    }
+  ]
+}
+
 const initialState = {
-  cities: [],
+  cities: cities,
   isLoading: false,
   currentCity: {},
   error: "",
@@ -70,22 +147,22 @@ function CityProvider({ children }) {
     dispatch,
   ] = useReducer(reducer, initialState);
 
-  useEffect(function () {
-    async function fetchCities() {
-      dispatch({ type: "loading" });
-      try {
-        const res = await fetch(`${URL}/cities`);
-        const data = await res.json();
-        console.log(data);
-        dispatch({ type: "cities/loaded", payload: data });
-        // setCities(data);
-      } catch (err) {
-        console.error(err.message);
-        dispatch({ type: "rejected", payload: err.message });
-      }
-    }
-    fetchCities();
-  }, []);
+  // useEffect(function () {
+  //   async function fetchCities() {
+  //     dispatch({ type: "loading" });
+  //     try {
+  //       const res = await fetch(`${URL}/cities`);
+  //       const data = await res.json();
+  //       console.log(data);
+  //       dispatch({ type: "cities/loaded", payload: data });
+  //       // setCities(data);
+  //     } catch (err) {
+  //       console.error(err.message);
+  //       dispatch({ type: "rejected", payload: err.message });
+  //     }
+  //   }
+  //   fetchCities();
+  // }, []);
 
   console.log("render");
 
