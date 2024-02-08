@@ -14,7 +14,7 @@ function getWindowSize() {
   return window.screen.availWidth || window.screen.width;
 }
 
-const cities = {
+const cities = [{
   "cities": [
     {
       "cityName": "Lisbon",
@@ -89,7 +89,7 @@ const cities = {
       }
     }
   ]
-}
+}]
 
 const initialState = {
   cities: cities,
